@@ -1,20 +1,22 @@
-package com.example.demo.db01.entity;
+package com.example.demo.db01.view;
 
-import java.io.Serializable;
 
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@Table(name = "user01")
-public class User01   {
-	@Id
+@ApiModel(value = "User01V", description = "用户对象")
+public class User01V   {
+    @ApiModelProperty(value = "用户id", name = "userId",example = "null")
 	private Integer userId;
+    @ApiModelProperty(value = "名称", name = "userName")
 	private String userName;
+    @ApiModelProperty(value = "年龄", name = "userAge",example = "0")
 	private Integer userAge;
+    @ApiModelProperty(value = "类型", name = "userType",example = "0")
 	private Integer userType;
+    @ApiModelProperty(value = "账号id", name = "accountId",example = "0")
 	private Integer accountId;
 
 

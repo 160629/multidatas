@@ -5,6 +5,7 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -18,6 +19,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
 import com.atomikos.jdbc.AtomikosDataSourceBean;
+import com.github.pagehelper.PageHelper;
 import com.mysql.cj.jdbc.MysqlXADataSource;
 
 import tk.mybatis.spring.mapper.MapperScannerConfigurer;
@@ -74,8 +76,18 @@ public class MyBatisConfig01 implements EnvironmentAware{
             throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
+        //分页插件
+        PageHelper pageHelper = new PageHelper();
+        Properties properties = new Properties();
+        properties.setProperty("reasonable", "true");
+        properties.setProperty("supportMethodsArguments", "true");
+        properties.setProperty("returnPageInfo", "check");
+        properties.setProperty("params", "count=countSql");
+        pageHelper.setProperties(properties);
         //添加XML目录
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        Interceptor[] plugins = new Interceptor[]{pageHelper};
+        bean.setPlugins(plugins);
         bean.setMapperLocations(resolver.getResources(xmlLocation));
         if (!org.springframework.util.StringUtils.isEmpty(typeAliasesPackage)) {
             bean.setTypeAliasesPackage(typeAliasesPackage);

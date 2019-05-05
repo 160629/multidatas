@@ -22,11 +22,11 @@ public class User01ServiceImpl implements User01Service {
 	@Override
 	public List<User01> selectUsers() {
 		// TODO Auto-generated method stub
-		List<User01> selectAll = user01Mapper.selectAll();
+/*		List<User01> selectAll = user01Mapper.selectAll();
 		System.out.println(selectAll);
 		List<User02> selectAll2 = user02Mapper.selectAll();
-		System.out.println(selectAll2);
-		return user01Mapper.selectUsers();
+		System.out.println(selectAll2);*/
+		return user01Mapper.selectAll();
 	}
 	@Override
 	public int addUser01(User01 user01) {
