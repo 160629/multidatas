@@ -43,7 +43,6 @@ public class Indexcontroller {
     	user02.setUserAge(aa);
     	int h = user01Service.addUser01(user01);
     	System.out.println(h);
-    	System.out.println(user02Service);
     	h=1/aa;
     	int addUser02 = user02Service.addUser02(user02);
     	System.out.println(addUser02);
