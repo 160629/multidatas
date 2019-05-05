@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.db02.mapper.User02Mapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap"
+		type="com.example.demo.db02.entity.User02">
+		<id column="userId" property="userId" />
+		<result column="userName" property="userName" />
+		<result column="userAge" property="userAge" />
+		<result column="userType" property="userType" />
+		<result column="accountId" property="accountId" />
+	</resultMap>
+
+
+
+
+	<select id="selectUsers"
+		resultMap="BaseResultMap">
+		SELECT u.`userId`,u.`userAge`,u.`userName`,u.`userType`
+		 FROM USER u 
+	</select>
+	
+	
+	<insert id="addUser02">
+		insert into USER (userName,userAge) values (#{userName},#{userAge});
+	</insert>
+</mapper>
