@@ -25,7 +25,7 @@ import javax.transaction.Transactional;
 
 @Api(tags = "用户管理")
 @RestController
-public class Indexcontroller {
+public class IndexController {
 	@Autowired
 	User01Service user01Service;
 	@Autowired
@@ -71,7 +71,6 @@ public class Indexcontroller {
 	}
 	
 	@ApiOperation(value = "用户分页")
-	@ApiImplicitParam(paramType = "query", name = "aa", value = "aa=0测试回滚", dataType = "Integer")
 	@GetMapping("userPages")
 	public Result<PageInfo> userPages() {
 		int pageNum = 1;
