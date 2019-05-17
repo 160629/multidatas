@@ -50,8 +50,6 @@ public class FileController {
 		response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(fileName, "utf-8")
 				+ ";filename*=utf-8''" + URLEncoder.encode(fileName, "utf-8"));
 
-		//XSSFWorkbook workbook = ExcelUtils.exportExcel(headers, fields, selectAllCompany, fileName);
-
 		workbook.write(response.getOutputStream());
 		response.flushBuffer();
 
